@@ -1,0 +1,15 @@
+creat-react-app => CRIAR TEMPLATE PROJETO
+JSX => DEIXA A FORMA DE ESCREVER O CÓDIGO MAIS SIMPLES
+Babel => TRADUZ PARA O CODE NAVEGADOR 
+SPA => Simple Page Application
+
+--- Desafios
+
+Importar fonte React
+Diferenca entre Biblioteca e Framework
+Erick e um site aí
+
+--- Em Casa
+
+npm install
+PS: Not Git node_nodules
