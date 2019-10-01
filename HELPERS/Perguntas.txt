@@ -1,0 +1,2 @@
+Qual a utilidade do super()?
+	--> Pegar as caracteristicas do Component

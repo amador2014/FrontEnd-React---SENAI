@@ -11,27 +11,55 @@ import logo from '../../assets/img/icon-login.png';
 
 // COMPONENTES
 import Rodape from '../../components/Rodape.js';
-import { promises } from "fs";
+//import { promises } from "fs";
 
 class Categorias extends Component {
 
-    //Vai construir o state 
+    //Vai construir o state e definir os atributos do componente
     constructor() {
         super();
         this.state = {
-            lista: [
+            lista: [ // A lista será os dados para a table :) 
                 // { idCategoria: 1, nome: 'Design' },
                 // { idCategoria: 2, nome: 'Jogos' },
                 // { idCategoria: 3, nome: 'Meetup' },
-            ]
+            ],
+            nome: ''
         }
     }
 
-    componentDidMount(){
+    // Conexão
+    cadastrarCategoria = (event) => {
+        event.preventDefault();
+        //console.log(this.state.nome);
+
+        fetch('http://192.168.7.85:5000/api/categorias', {
+            method: "POST",
+            body: JSON.stringify({ nome: this.state.nome }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+
+        })
+            .then(promessa => this.listarCategorias())
+            .catch(erro => console.log(erro))
+
+    }
+
+    // Captando valor SENDO QUE O EVENT É O INPUT
+    nomeCategoria = (event) => {
+        this.setState({ nome: event.target.value });
+    }
+
+    componentDidMount() {
+        this.listarCategorias();
+    }
+
+    listarCategorias = () => {
         fetch('http://192.168.7.85:5000/api/categorias')
-        .then(promessa => promessa.json())
-        .then(data => this.setState({lista: data}))
-        .catch(erro => console.log(erro));
+            .then(promessa => promessa.json())
+            .then(data => this.setState({ lista: data }))
+            //.catch(erro => console.log(erro));
     }
 
     //ArrowFunction são para as criadas
@@ -39,12 +67,12 @@ class Categorias extends Component {
         //estado da categoria
         event.preventDefault();
 
-        let lista = {idCategoria: 4, nome: 'Nova categoria'};
+        let lista = { idCategoria: 4, nome: 'Nova categoria' };
         let lista_state = this.state.lista;
 
         lista_state.push(lista);
-        console.log(lista_state)
-        
+        //console.log(lista_state);
+
         this.setState({ lista: lista_state });
     }
 
@@ -87,19 +115,21 @@ class Categorias extends Component {
 
                         <div className="container" id="conteudoPrincipal-cadastro">
                             <h2 className="conteudoPrincipal-cadastro-titulo">Cadastrar Categoria</h2>
-                            <form>
+                            <form onSubmit={this.cadastrarCategoria} >
                                 <div className="container">
                                     <input
                                         type="text"
                                         className="className__categoria"
                                         id="input__categoria"
                                         placeholder="tipo do evento"
+                                        onChange={this.nomeCategoria}
+                                        value={this.state.nome}
                                     />
                                     <button
-                                        id="btn__cadastrar" 
-                                        onClick={this.adicionaItem}
+                                        id="btn__cadastrar"
+                                        //onClick={this.adicionaItem}
                                         className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro"
-                                        >Cadastrar</button>
+                                    >Cadastrar</button>
                                 </div>
                             </form>
                         </div>

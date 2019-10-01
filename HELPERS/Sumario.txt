@@ -11,7 +11,7 @@ Erick e um site aí
 
 --- Em Casa
 
-npm install
+npm install -- É ISTO
 PS: Not Git node_nodules
 
 -------------------------------------------------------
