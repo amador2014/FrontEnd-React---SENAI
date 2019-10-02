@@ -9,13 +9,11 @@ Importar fonte React
 Diferenca entre Biblioteca e Framework
 Erick e um site aí
 
---- Em Casa
+--- Passos Em Casa
 
-npm install -- É ISTO
+npm install 
+npx create-react-app my-app
+entra na sua pasta
+	npm start
+
 PS: Not Git node_nodules
-
--------------------------------------------------------
----------------APRENDENDO REACT------------------------
--------------------------------------------------------
-
-1 - 
