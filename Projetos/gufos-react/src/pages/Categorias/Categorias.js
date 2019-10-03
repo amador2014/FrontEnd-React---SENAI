@@ -11,6 +11,8 @@ import logo from '../../assets/img/icon-login.png';
 
 // COMPONENTES
 import Rodape from '../../components/Rodape.js';
+import titulo from '../../components/Titulos.js'
+import Titulo from "../../components/Titulos.js";
 //import { promises } from "fs";
 
 class Categorias extends Component {
@@ -89,7 +91,8 @@ class Categorias extends Component {
 
                 <main className="conteudoPrincipal">
                     <section className="conteudoPrincipal-cadastro">
-                        <h1 className="conteudoPrincipal-cadastro-titulo">Categorias</h1>
+                        {/* <h1 className="conteudoPrincipal-cadastro-titulo">Categorias</h1> */}
+                        <Titulo titulo='Categorias' />
                         <div className="container" id="conteudoPrincipal-lista">
                             <table id="tabela-lista">
                                 <thead>

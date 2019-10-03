@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-//COMPONENTES
+//COMPONENTES - PAGES
 import App from './pages/Home/App.js';
 import Categorias from './pages/Categorias/Categorias.js';
 import NaoEncontrado from './pages/NaoEncontrado/NaoEncontrado.js';
 import Login from './pages/Login/Login.js';
+import Eventos from './pages/Eventos/Eventos.js';
 
 //ROTAS - elementos pegos
 import { Route, Link, BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
@@ -37,6 +38,7 @@ const routing = (
                 <Route exact path='/' component={App} />
                 <RotaPrivada path='/categorias' component={Categorias} />
                 <Route path='/login' component={Login} />
+                <RotaPrivada path='/eventos' component={Eventos}/>
                 <Route component={NaoEncontrado} />
             </Switch>
         </div>
