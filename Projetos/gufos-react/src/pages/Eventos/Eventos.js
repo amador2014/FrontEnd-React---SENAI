@@ -14,6 +14,7 @@ import Titulo from '../../components/Titulos';
 // IMG
 import logo from '../../assets/img/icon-login.png'
 import { promises } from "fs";
+import { tupleTypeAnnotation } from "@babel/types";
 
 export default class Eventos extends Component {
 
@@ -22,7 +23,12 @@ export default class Eventos extends Component {
         this.state = {
             listaEvento: [],
             tituloE: '',
+            localizacao: '',
+            dataEvento: '',
+            descricao: '',
             listaCategoria: [],
+            ativo: '',
+            idCategoria: ''
         }
     }
 
@@ -30,6 +36,7 @@ export default class Eventos extends Component {
         //event.preventDefault();
         Axios.get('http://192.168.7.85:5000/api/eventos')
             .then(response => {
+                console.log(response.data)
                 this.setState({ listaEvento: response.data })
             })
     };
@@ -43,10 +50,57 @@ export default class Eventos extends Component {
     };
 
     setarValorTitulo = (event) => {
-        this.setState({ tituloE: event.target.value});
-        console.log(this.tituloE)
+        this.setState({ tituloE: event.target.value });
     }
 
+    setarValorLocalizacao = (event) => {
+        this.setState({ localizacao: event.target.value });
+    }
+
+    setarValorEvento = (event) => {
+        this.setState({ dataEvento: event.target.value });
+    }
+
+    setarValorDescricao = (event) => {
+        this.setState({ descricao: event.target.value });
+    }
+
+    setarValorSelect2 = (event) => {
+        this.setState({ idCategoria: event.target.value });
+        //console.log(event.target.value);
+    }
+
+    setarValorSelect1 = (event) => {
+        if (event.target.value == 1) {
+            this.setState({ ativo: true });
+        }else{
+            this.setState({ ativo: false });
+        }
+    }
+
+
+    CadastrarEvento = (event) => {
+        event.preventDefault();
+
+        fetch('http://192.168.7.85:5000/api/eventos', {
+            method: "POST",
+            body: JSON.stringify({
+
+                localizacao: this.state.localizacao,
+                dataEvento: this.state.dataEvento,
+                descricao: this.state.descricao,
+                ativo: this.state.ativo,
+                idCategoria: this.state.idCategoria
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(promise => this.listarEventos())
+        .catch(erro => alert('Algum Erro Aconteceu, Tente Novamente'));
+    }
+
+    // EVitelli
     //----------
 
     componentDidMount() {
@@ -103,28 +157,39 @@ export default class Eventos extends Component {
                                     type="text"
                                     id="evento__titulo"
                                     placeholder="título do evento"
-                                    onChange={this.setarValorTitulo}
-                                    value={this.state.tituloE} />
-                                    
+                                    value={this.state.tituloE}
+                                    onChange={this.setarValorTitulo} />
                                 <input
                                     type="text"
                                     id="evento__localizacao"
-                                    placeholder="localização" />
+                                    placeholder="localização"
+                                    value={this.state.localizacao}
+                                    onChange={this.setarValorLocalizacao} />
                                 <input
-                                    type="text"
+                                    type="date"
                                     id="evento__data"
-                                    placeholder="dd/MM/yyyy" />
+                                    placeholder="dd/MM/yyyy"
+                                    value={this.state.dataEvento}
+                                    onChange={this.setarValorEvento} />
 
-                                <select id="option__acessolivre">
+                                <select
+                                    id="option__acessolivre"
+                                    onChange={this.setarValorSelect1}
+                                >
                                     <option value="1">Ativo</option>
                                     <option value="0">Desativo</option>
                                 </select>
 
-                                <select id="option__tipoevento">
+                                <select
+                                    id="option__tipoevento"
+                                    onChange={this.setarValorSelect2}
+                                >
                                     <option value="0" selected disabled>Categoria</option>
                                     {this.state.listaCategoria.map(element => {
                                         return (
-                                            <option>{element.nome}</option>
+                                            <option
+                                                value={element.idCategoria}
+                                            >{element.nome}</option>
                                         );
                                     })}
                                 </select>
@@ -133,10 +198,15 @@ export default class Eventos extends Component {
                                     rows="3"
                                     cols="50"
                                     placeholder="descrição do evento"
-                                    id="evento__descricao">
+                                    id="evento__descricao"
+                                    value={this.state.descricao}
+                                    onChange={this.setarValorDescricao} >
                                 </textarea>
                             </div>
-                            <button className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">Cadastrar</button>
+                            <button
+                                className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro"
+                                onClick={this.CadastrarEvento}
+                            >Cadastrar</button>
                         </div>
                     </section>
                 </main>
