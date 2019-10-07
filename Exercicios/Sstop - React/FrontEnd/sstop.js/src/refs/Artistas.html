@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>SStop - API - Artistas</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-10">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Cadastrar Artista</span>
+                    </div>
+                    <input type="text" id="nomeArtista" required class="form-control" placeholder="Nome do Artista"
+                        aria-label="nome" aria-describedby="basic-addon1" />
+
+                    <select required id="select" name="">
+                        <option value="es" selected disabled>Estilo</option>
+                    </select>
+
+                    <input class="btn btn-primary" type="submit" value="Cadastrar" id="btnCadastrar" />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover" id="tabela-lista">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Estilo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-lista-corpo"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //pegar input e button
+        let urlA = 'http://localhost:5000/api/Artistas';
+        let urlE = 'http://localhost:5000/api/Estilos';
+        let idE;
+        var nomeEstilo;
+
+        const input = document.querySelector("#nomeArtista")
+        const button = document.querySelector("#btnCadastrar");
+        const tabela = document.querySelector("#tabela-lista-corpo");
+        const select = document.querySelector("#select");
+        button.disabled = true;
+
+        window.onload = function () {
+            fetch(urlA) // GET POR PADRÃO
+                .then(promessa => promessa.json())
+                .then(conteudo => criarTabela(conteudo))
+                .catch(erro => console.log(erro));
+
+
+            function criarTabela(artistas) {
+                artistas.forEach(element => {
+                    const linha = document.createElement('tr');
+                    const celula_idA = document.createElement('td');
+                    const celula_nome = document.createElement('td');
+                    const celula_estilo = document.createElement('td');
+
+                    celula_idA.textContent = element.idArtista;
+                    celula_nome.textContent = element.nome;
+                    celula_estilo.textContent = element.estilo.nome;
+
+                    linha.appendChild(celula_idA);
+                    linha.appendChild(celula_nome);
+                    linha.appendChild(celula_estilo);
+                    tabela.appendChild(linha);
+                });
+            }
+
+            fetch(urlE) // GET POR PADRÃO
+                .then(promessa => promessa.json())
+                .then(conteudo => criarSelect(conteudo))
+                .catch(erro => console.log(erro));
+
+            function criarSelect(estilos) {
+                estilos.forEach(element => {
+                    const option = document.createElement('option');
+                    option.value = element.idEstilo;
+                    option.textContent = element.nome;
+                    select.appendChild(option);
+                });
+            }
+        }
+
+        function BuscarOptionId(name) {
+
+        }
+
+        button.addEventListener('click', function (event) {
+
+            optionSelecionada = select.options[select.selectedIndex]
+            // console.log(select.options[select.selectedIndex].value );
+
+            let objectJson = {
+                nome: input.value,
+                estiloId: parseInt(optionSelecionada.value),
+                estilo: {
+                    nome: optionSelecionada.text
+                }
+            };
+            console.log(objectJson);
+
+            let request = new XMLHttpRequest(); // conversa com o servidor com solicitações ou envios
+
+            request.onload = function () {
+
+                if (request.readyState == 4 && request.status == 200) {
+                    alert("O Artista '" + input.value + "' com o estilo '" + optionSelecionada.text + "' foi cadastrado com sucesso");
+                }
+            }
+
+            if (input.value.length >= 4 ) {
+                request.open('POST', urlA, true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+                request.send(JSON.stringify(objectJson));
+            } else {
+                alert("O estilo '" + input.value + "' deve ter mais de 3 letras e um campo deve estar selecionado");
+            }
+
+            input.value = "";
+            //location.reload();
+        });
+
+
+        input.addEventListener('input', function (event) {
+            if (input.value.length <= 4) {
+                button.disabled = true;
+            } else {
+                button.disabled = false;
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>
