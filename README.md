@@ -4,9 +4,9 @@
 
 Exercicios aplicados ao final do segundo termo do curso de Desenvolvimento de Sistemas SENAI, com intuito de desenvolver aplicações fullstacks com C#, Reactjs e SQL Server.
 
-- `/Gufos`: Gerenciador de eventos [acesse aqui]().
-- `/Enderecos`: RPG lúdico [acesse aqui]().
-- `/Sstop`: Controle do lançamento de filmes e séries [acesse aqui]().
+- `/Gufos`: Gerenciador de eventos [acesse aqui](https://github.com/amadorgabriel/2s2019-fullstack-exercises/tree/master/Gufos).
+- `/Enderecos`: Integração API ViaCep [acesse aqui](https://github.com/amadorgabriel/2s2019-fullstack-exercises/tree/master/Enderecos).
+- `/Sstop`: Getenciador de artistas e estilos músicais [acesse aqui](https://github.com/amadorgabriel/2s2019-fullstack-exercises/tree/master/Sstop).
 
 
 ### Conhecimentos trabalhados

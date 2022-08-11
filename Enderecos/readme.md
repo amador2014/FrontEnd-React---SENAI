@@ -15,13 +15,13 @@
 ## 📋 Desafio
 Dada a API do viacep: https://viacep.com.br/
 
-- [ ] Criar uma interface em React para que ao usuário digitar um cep de entrada, os campos de: logradouro, complemento, bairro, localidade e uf sejam preenchidos automaticamente pelo resultado que será obtido da API.
-- [ ] Caso o usuário digite um valor inválido, mostre uma mensagem de erro.
+- [X] Criar uma interface em React para que ao usuário digitar um cep de entrada, os campos de: logradouro, complemento, bairro, localidade e uf sejam preenchidos automaticamente pelo resultado que será obtido da API.
+- [X] Caso o usuário digite um valor inválido, mostre uma mensagem de erro.
 
 ### Desafios Extras
 
-- [ ] Validar o input do usuário que deverá ser somente do tipo inteiro.
-- [ ] Inserir os dados recebidos na api de endereços.
+- [X] Validar o input do usuário que deverá ser somente do tipo inteiro.
+- [X] Inserir os dados recebidos na api de endereços.
 
 ### Instruções
 

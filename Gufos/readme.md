@@ -13,7 +13,7 @@ A plataforma Gufos disponibiliza acesso aos eventos programadaos da Escola Senai
 - `/client`: aplicação frontend.
 - `/database`: scripts SQL Server.
 - `/server`: api C#.
-- `/docs`: documentos e modelagem do sistema (acesse aqui)[https://github.com/amadorgabriel/2s2019-sprint-1-bd/tree/master/GUFOS/].
+- `/docs`: documentos e modelagem do sistema [acesse aqui](https://github.com/amadorgabriel/2s2019-sprint-1-bd/tree/master/GUFOS/).
 
 &nbsp;
 

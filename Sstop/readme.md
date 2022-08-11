@@ -16,7 +16,8 @@
 
 ## 📋 Desafio
 
-- [X] CRUD de Artistas e Estilos
+- [X] CRUD de Artistas
+- [X] CRUD de Estilos
 
 &nbsp;
 
