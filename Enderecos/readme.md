@@ -1,13 +1,8 @@
-# Endereços
+# Endereços - Via Cep
 
 <p>
-    <img src="" height="300px">
+    <img src="https://github.com/amadorgabriel/2s2019-fullstack-exercises/blob/master/Enderecos/client/public/enderecos-viacep.png" height="400px">
 </p>
-
-
-## Sobre
-
-A plataforma Gufos disponibiliza acesso aos eventos programadaos da Escola Senai de Informática. A plataforma disponibiliza interatividade através ded categorias, filtros, lista de interesses e muito mais!
 
 ### Subpastas
 
@@ -15,29 +10,24 @@ A plataforma Gufos disponibiliza acesso aos eventos programadaos da Escola Senai
 - `/database`: scripts SQL Server.
 - `/server`: api C#.
 
-## Desafio
-Dada a API do viacep:
-https://viacep.com.br/
+&nbsp;
 
-Criar uma interface em React para que ao usuário digitar 
-um cep de entrada, os campos de: logradouro, complemento,
-bairro, localidade e uf sejam preenchidos automaticamente
-pelo resultado que será obtido da API.
+## 📋 Desafio
+Dada a API do viacep: https://viacep.com.br/
 
-Caso o usuário digite um valor inválido, mostre uma 
-mensagem de erro.
+- [ ] Criar uma interface em React para que ao usuário digitar um cep de entrada, os campos de: logradouro, complemento, bairro, localidade e uf sejam preenchidos automaticamente pelo resultado que será obtido da API.
+- [ ] Caso o usuário digite um valor inválido, mostre uma mensagem de erro.
 
-Desafios Extras
+### Desafios Extras
 
-Validar o input do usuário que deverá ser somente do tipo 
-inteiro.
+- [ ] Validar o input do usuário que deverá ser somente do tipo inteiro.
+- [ ] Inserir os dados recebidos na api de endereços.
 
-Inserir os dados recebidos na api de endereços.
+### Instruções
 
-Execute o arquivo run.bat em enderecos\Senai.Enderecos.WebApi
-para subir a api.
-Execute no SSMS o arquivo enderecos.sql para criar o banco de dados.
-Endpoint: POST localhost:5000/api/endereco
+- Execute o arquivo run.bat em enderecos\Senai.Enderecos.WebApi para subir a api.
+- Execute no SSMS o arquivo enderecos.sql para criar o banco de dados.
+- Endpoint: POST localhost:5000/api/endereco
 
 &nbsp;
 
