@@ -1,7 +1,7 @@
 # Gufos
 
 <p>
-    <img src="" height="300px">
+    <img src="https://github.com/amadorgabriel/2s2019-fullstack-exercises/blob/master/Gufos/client/public/gufos.png" height="400px">
 </p>
 
 ## Sobre
@@ -13,21 +13,20 @@ A plataforma Gufos disponibiliza acesso aos eventos programadaos da Escola Senai
 - `/client`: aplicação frontend.
 - `/database`: scripts SQL Server.
 - `/server`: api C#.
+- `/docs`: documentos e modelagem do sistema (acesse aqui)[https://github.com/amadorgabriel/2s2019-sprint-1-bd/tree/master/GUFOS/].
 
+&nbsp;
 
-## Desafio
-Execute o arquivo 'run.bat' dentro da pasta sstop/Senai.Sstop.WebApi/Senai.Sstop.WebApi/
+## 📋 Desafio
 
-Crie uma interface em react que receba os seguintes endpoints
+- [X] Crie uma interface em react que receba os seguintes endpoints
+- [X] Cadastrar -> POST localhost:5000/api/estilos
+- [X] Buscar estilos -> GET localhost:5000/api/estilos
+- [X] Buscar estilo por id -> GET localhost:5000/api/estilos/{id}
 
-Cadastrar
-POST localhost:5000/api/estilos
+### Instruções
 
-Buscar estilos
-GET localhost:5000/api/estilos
-
-Buscar estilo por id
-GET localhost:5000/api/estilos/{id}
+- Execute o arquivo 'run.bat' dentro da pasta sstop/Senai.Sstop.WebApi/Senai.Sstop.WebApi/
 
 &nbsp;
 
